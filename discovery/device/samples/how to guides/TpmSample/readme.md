@@ -15,4 +15,4 @@ This is a quick tutorial with the steps to register an ARC enabled device.
 > Replace `RegistrationId` with the individual enrollment registration Id.
 > To see a full list of parameters, run `dotnet run -?`.
 
-1. Continue by following the instructions presented by the sample.
+6. Continue by following the instructions presented by the sample.
