@@ -139,7 +139,7 @@ extends:
           - Build_Packages
 
         pool:
-          vmImage: windows
+          type: windows
 
         variables:
           NUGET_PACKGE_FOLDER: $[ dependencies.Build_Packages.outputs['BUILD_PKG.NUGET_PKG_DATE'] ]
