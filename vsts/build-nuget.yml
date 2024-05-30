@@ -57,7 +57,7 @@ extends:
           type: windows  # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
         
         variables: # More settings at https://aka.ms/obpipelines/yaml/jobs
-          ob_outputDirectory: '$(REPOROOT)\out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+          ob_outputDirectory: '$(Build.ArtifactStagingDirectory)\out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
           ob_sdl_binskim_break: true # https://aka.ms/obpipelines/sdl
 
           # ob_sdl_suppression_suppressionFile: $(Build.SourcesDirectory)\.gdn\build.nonofficial.gdnsuppress
@@ -136,12 +136,13 @@ extends:
 
         condition: succeeded()
         dependsOn:
-          - Build_Packages
+          - main
 
         pool:
           type: windows
 
         variables:
+          ob_outputDirectory: '$(Build.ArtifactStagingDirectory)\out'
           NUGET_PACKGE_FOLDER: $[ dependencies.Build_Packages.outputs['BUILD_PKG.NUGET_PKG_DATE'] ]
 
         steps:
